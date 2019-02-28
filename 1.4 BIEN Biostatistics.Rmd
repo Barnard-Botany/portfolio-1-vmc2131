@@ -163,8 +163,8 @@ Anitidus_DBH_small = as.data.frame(Anitidus_DBH_small)
 class(Anitidus_DBH_small)
 head(Anitidus_DBH_small)
 class(Anitidus_DBH_small$trait_value)
-DBHa = as.numeric(Anitidus_DBH_small$trait_value)
-class(DBHa)
+DBHn = as.numeric(Anitidus_DBH_small$trait_value)
+class(DBHn)
 ```
 
 
@@ -211,6 +211,7 @@ class(DBHboth)
 ```{r}
 boxplot(DBHboth)
 hist(DBHboth)
+boxplot(DBHh, DBHn, DBH)
 ```
 
 ```{r}
@@ -273,8 +274,12 @@ choose two species in the genus Agave (used for fiber, tequila; see Wikipedia)
 ```{r}
 # Population Mean Between Two Independent Samples
 # http://www.r-tutor.com/elementary-statistics/inference-about-two-populations/population-mean-between-two-independent-samples
-ttest_result1 = t.test(x=Breadfruit_WPH_small$scrubbed_species_binomial, y=Breadfruit_WPH_small$trait_value, paired=FALSE, alternative="two.sided")
+# T. Test Exercise
+ttest_result1 = t.test(x=DBHn, y=DBHh, paired=FALSE, alternative="two.sided")
 ttest_result1
+#ttest_result1 =
+# t.test(x=Breadfruit_WPH_small$scrubbed_species_binomial, y=Breadfruit_WPH_small$trait_value, paired=FALSE, alternative="two.sided")
+#ttest_result1
 ```
 
 # This will prepare you for Digital Lab 2
@@ -324,4 +329,26 @@ tail(OrangeCal_list)
 
 Before our next digital lab on Feb 22, choose one of the exercises above and complete it. 
 
+
+
+
+
+
+
+
 Also use this last coding exercise to obtain species lists for three counties in a state in the USA outside of New York. For example, you could start with the county where you attended high school. Or, you could use a county where you have vacationed in the past, or where you would like to visit. Also download data for two adjacent counties. 
+```{r}
+Miami_list<-BIEN_list_county(country = "United States", state="Florida", county="Miami-Dade")
+head(Miami_list)
+tail(Miami_list)
+```
+```{r}
+Monroe_list<-BIEN_list_county(country = "United States", state="Florida", county="Monroe")
+head(Monroe_list)
+tail(Monroe_list)
+```
+```{r}
+Broward_list<-BIEN_list_county(country = "United States", state="Florida", county="Broward")
+head(Broward_list)
+tail(Broward_list)
+```
